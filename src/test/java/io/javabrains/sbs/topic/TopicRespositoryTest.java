@@ -2,6 +2,7 @@ package io.javabrains.sbs.topic;
 
 import static org.junit.Assert.assertNotNull;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class TopicRespositoryTest {
 		System.out.println(tp.getDescription() + " " + tp.getId());
 
 		assertNotNull(tp);
+		
+		Assertions.assertThat("name").isEqualTo(tp.getName());
+		
+		Assertions.assertThat("desc").isEqualTo(tp.getDescription());
 	}
 
 }
