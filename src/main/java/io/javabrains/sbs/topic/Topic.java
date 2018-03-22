@@ -1,7 +1,6 @@
 package io.javabrains.sbs.topic;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,8 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import io.javabrains.sbs.course.Course;
 import lombok.Data;
@@ -30,6 +29,7 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "Topic")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Topic {
 
 	public Topic(String description, String name) {
@@ -52,8 +52,7 @@ public class Topic {
 	private String name;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
-	@JoinColumn(name = "TopicId", nullable = true, referencedColumnName = "Id")
-	@JsonIgnoreProperties("topic")
+	@JoinColumn(name = "TopicId", nullable = true)
 	private List<Course> courses;
 
 }

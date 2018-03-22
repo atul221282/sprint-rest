@@ -11,7 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import io.javabrains.sbs.topic.Topic;
 import lombok.Data;
@@ -22,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "Course")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Course {
 	public Course() {
 	}
@@ -35,12 +37,12 @@ public class Course {
 	@NonNull
 	@Column(name = "Name")
 	private String name;
+
 	@NonNull
 	@Column(name = "Description")
 	private String description;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "TopicId")
-	@JsonIgnoreProperties("courses")
 	private Topic topic;
 }
