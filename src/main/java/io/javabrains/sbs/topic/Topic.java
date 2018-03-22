@@ -29,7 +29,7 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "Topic")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Topic.class)
 public class Topic {
 
 	public Topic(String description, String name) {
@@ -54,5 +54,4 @@ public class Topic {
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "TopicId", nullable = true)
 	private List<Course> courses;
-
 }
