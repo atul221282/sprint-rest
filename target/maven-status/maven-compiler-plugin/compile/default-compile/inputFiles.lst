@@ -1,5 +1,4 @@
 C:\eclipse-workspace\course-rest\src\main\java\io\javabrains\sbs\topic\TopicService.java
-C:\eclipse-workspace\course-rest\src\main\java\io\javabrains\sbs\topic\TopicRespository.java
 C:\eclipse-workspace\course-rest\src\main\java\io\javabrains\sbs\topic\Topic.java
 C:\eclipse-workspace\course-rest\src\main\java\io\javabrains\sbs\CourseApiApp.java
 C:\eclipse-workspace\course-rest\src\main\java\io\javabrains\sbs\topic\TopicController.java
@@ -8,3 +7,4 @@ C:\eclipse-workspace\course-rest\src\main\java\io\javabrains\sbs\New.java
 C:\eclipse-workspace\course-rest\src\main\java\io\javabrains\sbs\topic\TopicServiceImpl.java
 C:\eclipse-workspace\course-rest\src\main\java\io\javabrains\sbs\course\package-info.java
 C:\eclipse-workspace\course-rest\src\main\java\io\javabrains\sbs\Existing.java
+C:\eclipse-workspace\course-rest\src\main\java\io\javabrains\sbs\topic\TopicRepository.java

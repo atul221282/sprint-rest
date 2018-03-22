@@ -1,6 +1,7 @@
 package io.javabrains.sbs.topic;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.javabrains.sbs.course.Course;
@@ -51,7 +53,7 @@ public class Topic {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "TopicId", nullable = true, referencedColumnName = "Id")
-	@JsonManagedReference
+	@JsonIgnoreProperties("topic")
 	private List<Course> courses;
 
 }

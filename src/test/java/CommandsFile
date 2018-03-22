@@ -1,0 +1,8 @@
+How to skip unit tests
+	mvn install -DskipUTs=true
+	
+How to skip integration tests
+	mvn install -DskipITs=true
+	
+How to skip all tests
+	mvn install -DskipTests=true 

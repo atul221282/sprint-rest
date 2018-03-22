@@ -18,9 +18,9 @@ import org.springframework.stereotype.Service;
 public class TopicServiceImpl implements TopicService {
 
 	@Autowired
-	private final TopicRespository topicRespository;
+	private final TopicRepository topicRespository;
 
-	public TopicServiceImpl(TopicRespository topicRespository) {
+	public TopicServiceImpl(TopicRepository topicRespository) {
 		this.topicRespository = topicRespository;
 		System.out.println("Service Init");
 	}

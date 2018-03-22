@@ -60,7 +60,7 @@ public class TopicController {
 
 	@PostMapping
 	public ResponseEntity<?> addTopic(@RequestBody Topic topic) {
-
+		System.out.println(topic);
 		topicService.addTopic(topic);
 
 		URI uri = UriComponentsBuilder.newInstance().scheme("http").host("localhost")
