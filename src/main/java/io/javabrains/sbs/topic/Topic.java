@@ -1,5 +1,6 @@
 package io.javabrains.sbs.topic;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -22,7 +26,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-//TODO: Put this in seprate entity project
+//TODO: Put this in separate entity project
 
 @Data
 @RequiredArgsConstructor
@@ -42,6 +46,11 @@ public class Topic {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	private Long id;
+
+	@Version
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "Version", nullable = false)
+	private Date version;
 
 	@NonNull
 	@Column(name = "Description")
