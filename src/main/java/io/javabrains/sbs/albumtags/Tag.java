@@ -1,16 +1,14 @@
-package io.javabrains.sbs.manytomany;
+package io.javabrains.sbs.albumtags;
 
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
@@ -27,9 +25,8 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Tutorial.class)
-public class Tutorial {
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Tag.class)
+public class Tag {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NonNull
@@ -42,9 +39,9 @@ public class Tutorial {
 	private Date version;
 
 	@NonNull
-	@Column(name = "Name")
-	private String name;
+	@Column(name = "Category")
+	private String category;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "tutorials")
-	private List<Student> students;
+	@OneToMany(mappedBy = "album")
+	private List<AlbumTag> albumTags;
 }
