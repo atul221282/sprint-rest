@@ -1,9 +1,9 @@
-io\javabrains\sbs\topic\TopicRepository.class
 io\javabrains\sbs\topic\TopicController.class
-io\javabrains\sbs\topic\TopicService.class
 io\javabrains\sbs\course\Course.class
-io\javabrains\sbs\Existing.class
-io\javabrains\sbs\topic\TopicServiceImpl.class
 io\javabrains\sbs\CourseApiApp.class
 io\javabrains\sbs\New.class
+io\javabrains\sbs\topic\TopicRepository.class
+io\javabrains\sbs\topic\TopicService.class
+io\javabrains\sbs\Existing.class
+io\javabrains\sbs\topic\TopicServiceImpl.class
 io\javabrains\sbs\topic\Topic.class

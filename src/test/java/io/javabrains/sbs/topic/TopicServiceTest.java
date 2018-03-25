@@ -1,6 +1,8 @@
 package io.javabrains.sbs.topic;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +18,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import io.javabrains.sbs.course.Course;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -44,4 +48,5 @@ public class TopicServiceTest {
 
 		System.out.println("=======Running TopicServiceTest Ends==========");
 	}
+
 }

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: Java Spring Rest API
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: AtulChaudhary
+Built-By: atulc
 Implementation-Vendor-Id: io.javabrains.spqs
 Build-Jdk: 1.8.0_161
 Implementation-URL: http://projects.spring.io/spring-boot/course-rest/
