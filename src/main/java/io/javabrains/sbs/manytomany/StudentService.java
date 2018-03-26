@@ -22,7 +22,7 @@ public class StudentService {
 	}
 
 	public Optional<Student> get(long id) {
-		return Optional.of(studentRepository.findOne(id));
+		return studentRepository.findById(id);
 	}
 
 	public Optional<List<Student>> get() {

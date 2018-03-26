@@ -36,8 +36,7 @@ public class TopicServiceImpl implements TopicService {
 	@Override
 	@Async
 	public CompletableFuture<Optional<Topic>> getTopic(Long id) throws InterruptedException, ExecutionException {
-		return CompletableFuture
-				.completedFuture(id == null ? Optional.empty() : Optional.of(topicRespository.findOne(id)));
+		return CompletableFuture.completedFuture(id == null ? Optional.empty() : topicRespository.findById(id));
 	}
 
 	@Override
@@ -47,9 +46,9 @@ public class TopicServiceImpl implements TopicService {
 
 	@Override
 	public void update(Topic topic) throws Exception {
-		Topic toUpdate = topicRespository.findOne(topic.getId());
+		Optional<Topic> toUpdate = topicRespository.findById(topic.getId());
 
-		if (toUpdate == null)
+		if (!toUpdate.isPresent())
 			throw new Exception("No topic found");
 
 		topicRespository.save(topic);
@@ -57,7 +56,7 @@ public class TopicServiceImpl implements TopicService {
 
 	@Override
 	public void deleteTopic(Long id) {
-		topicRespository.delete(id);
+		topicRespository.deleteById(id);
 	}
 
 	@Override

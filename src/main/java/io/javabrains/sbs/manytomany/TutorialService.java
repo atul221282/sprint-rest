@@ -21,7 +21,7 @@ public class TutorialService {
 	}
 
 	public Optional<Tutorial> get(long id) {
-		return Optional.of(tutorialRepository.findOne(id));
+		return tutorialRepository.findById(id);
 	}
 
 	public Optional<List<TutorialDto>> get() {
