@@ -37,13 +37,15 @@ public class TopicController {
 	@RequestMapping()
 	public CompletableFuture<ResponseEntity<?>> getAllTopics() throws InterruptedException, ExecutionException {
 		Optional<List<Topic>> optTopics = topicService.getAllTopics().get();
-
 		return optTopics.isPresent() ? CompletableFuture.completedFuture(ResponseEntity.ok(optTopics.get()))
 				: CompletableFuture.completedFuture(ResponseEntity.status(500).build());
 	}
 
 	@RequestMapping("{id}")
-	public ResponseEntity<?> getTopic(@PathVariable Long id) throws InterruptedException, ExecutionException {
+	public ResponseEntity<?> getTopic(@PathVariable Long id) throws Exception {
+		if (id == 1) {
+			throw new Exception("thrown deliberately");
+		}
 		CompletableFuture<Optional<Topic>> topicOption = topicService.getTopic(id);
 
 		return topicOption.get().isPresent() ? ResponseEntity.ok(topicOption.get().get())
