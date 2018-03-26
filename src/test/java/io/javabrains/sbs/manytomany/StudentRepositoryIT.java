@@ -28,13 +28,13 @@ public class StudentRepositoryIT {
 		Student student = new Student("Iha", Arrays.asList(tut, tut2));
 		studentRepository.save(student);
 
-		Student insStudent = studentRepository.findOne((long) 1);
+		Student insStudent = studentRepository.findById((long) 1).get();
 		insStudent.setName("Ishana Chaudhary");
 		List<Tutorial> tuts = insStudent.getTutorials();
 		tuts.get(0).setName("ABC TV");
 
 		studentRepository.save(insStudent);
-		Student insStudent2 = studentRepository.findOne((long) 1);
+		Student insStudent2 = studentRepository.findById((long) 1).get();
 
 		Assert.assertEquals("Ishana Chaudhary", insStudent2.getName());
 		Assert.assertEquals("ABC TV", insStudent2.getTutorials().get(0).getName());
