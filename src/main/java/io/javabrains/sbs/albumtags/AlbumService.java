@@ -36,4 +36,21 @@ public class AlbumService {
 
 		return list;
 	}
+
+	public List<AlbumSummaryDto> findByAlbumSearchCriteria(AlbumSearchCriteria criteria) {
+		Specification<Album> albumSpec = null;
+
+		if (!criteria.getTitle().isEmpty()) {
+			albumSpec = new AlbumTitleSpecification(criteria);
+		}
+
+		if (!criteria.getDescription().isEmpty()) {
+			albumSpec = albumSpec == null ? new AlbumDescriptionSpecification(criteria)
+					: new AndSpecification<>(albumSpec, new AlbumDescriptionSpecification(criteria));
+		}
+
+		List<AlbumSummaryDto> list = repository.customSpecification(albumSpec);
+
+		return list;
+	}
 }

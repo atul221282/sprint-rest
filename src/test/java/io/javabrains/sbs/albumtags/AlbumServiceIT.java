@@ -41,6 +41,23 @@ public class AlbumServiceIT {
 	@Test
 	public void findBySearchCriteria_withInvalidCriteria_returnNoAlbums() {
 		List<Album> albums = service.findBySearchCriteria(new AlbumSearchCriteria("asas", new Date(), ""));
+
+		assertTrue(albums.size() <= 0);
+	}
+
+	@Test
+	public void findByAlbumSearchCriteria_withValidCriteria_returnAlbumSummary() {
+		List<AlbumSummaryDto> albums = service
+				.findByAlbumSearchCriteria(new AlbumSearchCriteria("title", new Date(), "desc"));
+
+		assertTrue(albums.size() > 0);
+	}
+	
+	@Test
+	public void findByAlbumSearchCriteria_withInvalidCriteria_returnNoAlbumSummary() {
+		List<AlbumSummaryDto> albums = service
+				.findByAlbumSearchCriteria(new AlbumSearchCriteria("asasas", new Date(), "qwqwq"));
+
 		assertTrue(albums.size() <= 0);
 	}
 
