@@ -43,9 +43,6 @@ public class TopicController {
 
 	@RequestMapping("{id}")
 	public ResponseEntity<?> getTopic(@PathVariable Long id) throws Exception {
-		if (id == 1) {
-			throw new Exception("thrown deliberately");
-		}
 		CompletableFuture<Optional<Topic>> topicOption = topicService.getTopic(id);
 
 		return topicOption.get().isPresent() ? ResponseEntity.ok(topicOption.get().get())

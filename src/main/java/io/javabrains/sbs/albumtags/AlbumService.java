@@ -20,6 +20,7 @@ public class AlbumService {
 		return repository.save(album);
 	}
 
+	@TrackTime
 	public List<Album> findBySearchCriteria(AlbumSearchCriteria criteria) {
 		Specification<Album> albumSpec = null;
 
@@ -37,6 +38,7 @@ public class AlbumService {
 		return list;
 	}
 
+	@TrackTime
 	public List<AlbumSummaryDto> findByAlbumSearchCriteria(AlbumSearchCriteria criteria) {
 		Specification<Album> albumSpec = null;
 
