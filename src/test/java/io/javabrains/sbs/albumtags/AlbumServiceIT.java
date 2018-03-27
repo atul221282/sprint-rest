@@ -47,6 +47,7 @@ public class AlbumServiceIT {
 
 	@Test
 	public void findByAlbumSearchCriteria_withValidCriteria_returnAlbumSummary() {
+		Album album = service.save(new Album("title", "desc", new Date(), null));
 		List<AlbumSummaryDto> albums = service
 				.findByAlbumSearchCriteria(new AlbumSearchCriteria("title", new Date(), "desc"));
 
