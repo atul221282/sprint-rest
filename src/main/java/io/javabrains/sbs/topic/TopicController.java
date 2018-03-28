@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("api/topics")
+@RequestMapping(value = "api/topics", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 public class TopicController {
 
 	private final TopicService topicService;
@@ -43,14 +43,14 @@ public class TopicController {
 	}
 
 	@Async
-	@RequestMapping()
+	@RequestMapping(method = RequestMethod.GET)
 	public CompletableFuture<ResponseEntity<?>> getAllTopics() throws InterruptedException, ExecutionException {
 		Optional<List<Topic>> optTopics = topicService.getAllTopics().get();
 		return optTopics.isPresent() ? CompletableFuture.completedFuture(ResponseEntity.ok(optTopics.get()))
 				: CompletableFuture.completedFuture(ResponseEntity.status(500).build());
 	}
 
-	@RequestMapping("{id}")
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getTopic(@PathVariable Long id) throws Exception {
 		CompletableFuture<Optional<Topic>> topicOption = topicService.getTopic(id);
 
@@ -58,7 +58,7 @@ public class TopicController {
 				: ResponseEntity.badRequest().body(Arrays.asList("Some Error"));
 	}
 
-	@RequestMapping("/name/{name}")
+	@RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
 	public ResponseEntity<?> getTopicByName(@PathVariable String name) {
 		Optional<Topic> topicOption = topicService.getTopicByName(name);
 
@@ -66,7 +66,7 @@ public class TopicController {
 				: ResponseEntity.badRequest().body(Arrays.asList("Some Error"));
 	}
 
-	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> addTopic(@RequestBody Topic topic) {
 		System.out.println(topic);
 		topicService.addTopic(topic);
