@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
@@ -26,11 +28,18 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class TopicController {
 
 	private final TopicService topicService;
+	private static final Logger logger = LogManager.getLogger(TopicController.class);
 
 	@Autowired
 	@Lazy
 	public TopicController(TopicService topicService) {
 		this.topicService = topicService;
+		logger.debug("Debugging log");
+		logger.info("Info log");
+		logger.warn("Hey, This is a warning!");
+		logger.error("Oops! We have an Error. OK");
+		logger.fatal("Damn! Fatal error. Please fix me.");
+
 	}
 
 	@Async

@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
@@ -17,10 +19,17 @@ import org.springframework.stereotype.Service;
 @Scope("prototype")
 public class TopicServiceImpl implements TopicService {
 
+	private static final Logger logger = LogManager.getLogger(TopicServiceImpl.class);
+	
 	@Autowired
 	private final TopicRepository topicRespository;
 
 	public TopicServiceImpl(TopicRepository topicRespository) {
+		logger.debug("Debugging log");
+        logger.info("Info log");
+        logger.warn("Hey, This is a warning!");
+        logger.error("Oops! We have an Error. OK");
+        logger.fatal("Damn! Fatal error. Please fix me.");
 		this.topicRespository = topicRespository;
 		System.out.println("Service Init");
 	}
